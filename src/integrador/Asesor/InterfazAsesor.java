@@ -46,7 +46,7 @@ public class InterfazAsesor extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         gestionarventabutton = new javax.swing.JButton();
         gestionarclientesbutton = new javax.swing.JButton();
-        gestionarpagobutton = new javax.swing.JButton();
+        realizarpagobutton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -66,7 +66,7 @@ public class InterfazAsesor extends javax.swing.JFrame {
         botonsalir1.setBackground(new java.awt.Color(0, 0, 0));
         botonsalir1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         botonsalir1.setForeground(new java.awt.Color(255, 255, 255));
-        botonsalir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/boton salir.png"))); // NOI18N
+        botonsalir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/boton salir.png"))); // NOI18N
         botonsalir1.setBorder(null);
         botonsalir1.setMaximumSize(new java.awt.Dimension(10, 10));
         botonsalir1.setMinimumSize(new java.awt.Dimension(10, 10));
@@ -241,21 +241,21 @@ public class InterfazAsesor extends javax.swing.JFrame {
             }
         });
 
-        gestionarpagobutton.setBackground(new java.awt.Color(0, 0, 0));
-        gestionarpagobutton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        gestionarpagobutton.setForeground(new java.awt.Color(255, 255, 255));
-        gestionarpagobutton.setText("GESTIONAR PAGO");
-        gestionarpagobutton.addActionListener(new java.awt.event.ActionListener() {
+        realizarpagobutton.setBackground(new java.awt.Color(0, 0, 0));
+        realizarpagobutton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        realizarpagobutton.setForeground(new java.awt.Color(255, 255, 255));
+        realizarpagobutton.setText("REALIZAR PAGO");
+        realizarpagobutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gestionarpagobuttonActionPerformed(evt);
+                realizarpagobuttonActionPerformed(evt);
             }
         });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestionar ventas.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/gestionar ventas.png"))); // NOI18N
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestionarcliente.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/gestionarcliente.png"))); // NOI18N
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestion pago.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/gestion pago.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -276,7 +276,7 @@ public class InterfazAsesor extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(gestionarventabutton, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(153, 153, 153)
-                                .addComponent(gestionarpagobutton, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(realizarpagobutton, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(30, 30, 30))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(gestionarclientesbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -295,7 +295,7 @@ public class InterfazAsesor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(gestionarventabutton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(gestionarpagobutton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(realizarpagobutton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -327,30 +327,38 @@ public class InterfazAsesor extends javax.swing.JFrame {
 
     private void botonventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonventasActionPerformed
         // TODO add your handling code here:
-        System.out.println("venta");
+        InterfazConsultaMisventas cventa=new InterfazConsultaMisventas();
+        cventa.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonventasActionPerformed
 
     private void botonpagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonpagosActionPerformed
         // TODO add your handling code here:
-        System.out.println("pagos");
+        InterfazConsultaPagos cpagos=new InterfazConsultaPagos();
+        cpagos.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonpagosActionPerformed
 
     private void botonclientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonclientesActionPerformed
         // TODO add your handling code here:
-        System.out.println("clientes");
+        InterfazConsultaClientesRegistrados cclientes=new InterfazConsultaClientesRegistrados();
+        cclientes.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonclientesActionPerformed
 
     private void botonvencimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonvencimientosActionPerformed
         // TODO add your handling code here:
-        System.out.println("vencimientos");
+        InterfazConsultaCuotasVencer ccuotasvencer=new InterfazConsultaCuotasVencer();
+        ccuotasvencer.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonvencimientosActionPerformed
 
-    private void gestionarpagobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionarpagobuttonActionPerformed
+    private void realizarpagobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realizarpagobuttonActionPerformed
         // TODO add your handling code here:
-        InterfazGestionarPago gpago=new InterfazGestionarPago();
+        InterfazRealizarPago gpago=new InterfazRealizarPago();
         gpago.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_gestionarpagobuttonActionPerformed
+    }//GEN-LAST:event_realizarpagobuttonActionPerformed
 
     private void gestionarclientesbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionarclientesbuttonActionPerformed
         // TODO add your handling code here:
@@ -432,7 +440,6 @@ public class InterfazAsesor extends javax.swing.JFrame {
     private javax.swing.JButton botonvencimientos;
     private javax.swing.JButton botonventas;
     private javax.swing.JButton gestionarclientesbutton;
-    private javax.swing.JButton gestionarpagobutton;
     private javax.swing.JButton gestionarventabutton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -443,11 +450,10 @@ public class InterfazAsesor extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JButton realizarpagobutton;
     // End of variables declaration//GEN-END:variables
 }

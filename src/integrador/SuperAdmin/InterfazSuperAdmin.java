@@ -4,6 +4,7 @@
  */
 package integrador.SuperAdmin;
 
+import integrador.Asesor.InterfazGestionarVenta;
 import integrador.Login;
 
 /**
@@ -34,21 +35,9 @@ public class InterfazSuperAdmin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         botonsalir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        botonventas = new javax.swing.JButton();
-        botonpagos = new javax.swing.JButton();
-        botonclientes = new javax.swing.JButton();
-        botonvencimientos = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
-        gestionarventabutton = new javax.swing.JButton();
-        gestionarclientesbutton = new javax.swing.JButton();
-        gestionarpagobutton = new javax.swing.JButton();
+        gestionarasesorbutton = new javax.swing.JButton();
+        gestionaradminbutton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,7 +55,7 @@ public class InterfazSuperAdmin extends javax.swing.JFrame {
         botonsalir.setBackground(new java.awt.Color(0, 0, 0));
         botonsalir.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         botonsalir.setForeground(new java.awt.Color(255, 255, 255));
-        botonsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/boton salir.png"))); // NOI18N
+        botonsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/boton salir.png"))); // NOI18N
         botonsalir.setBorder(null);
         botonsalir.setMaximumSize(new java.awt.Dimension(10, 10));
         botonsalir.setMinimumSize(new java.awt.Dimension(10, 10));
@@ -104,202 +93,61 @@ public class InterfazSuperAdmin extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
-
-        botonventas.setBackground(new java.awt.Color(0, 0, 0));
-        botonventas.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        botonventas.setForeground(new java.awt.Color(255, 255, 255));
-        botonventas.setText("MIS VENTAS");
-        botonventas.setBorder(null);
-        botonventas.addActionListener(new java.awt.event.ActionListener() {
+        gestionarasesorbutton.setBackground(new java.awt.Color(0, 0, 0));
+        gestionarasesorbutton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        gestionarasesorbutton.setForeground(new java.awt.Color(255, 255, 255));
+        gestionarasesorbutton.setText("GESTIONAR ASESOR");
+        gestionarasesorbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonventasActionPerformed(evt);
+                gestionarasesorbuttonActionPerformed(evt);
             }
         });
 
-        botonpagos.setBackground(new java.awt.Color(0, 0, 0));
-        botonpagos.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        botonpagos.setForeground(new java.awt.Color(255, 255, 255));
-        botonpagos.setText("PAGOS");
-        botonpagos.setBorder(null);
-        botonpagos.addActionListener(new java.awt.event.ActionListener() {
+        gestionaradminbutton.setBackground(new java.awt.Color(0, 0, 0));
+        gestionaradminbutton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        gestionaradminbutton.setForeground(new java.awt.Color(255, 255, 255));
+        gestionaradminbutton.setText("GESTIONAR ADMIN");
+        gestionaradminbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonpagosActionPerformed(evt);
+                gestionaradminbuttonActionPerformed(evt);
             }
         });
 
-        botonclientes.setBackground(new java.awt.Color(0, 0, 0));
-        botonclientes.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        botonclientes.setForeground(new java.awt.Color(255, 255, 255));
-        botonclientes.setText("CLIENTES");
-        botonclientes.setBorder(null);
-        botonclientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonclientesActionPerformed(evt);
-            }
-        });
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ASESOR IMG.png"))); // NOI18N
 
-        botonvencimientos.setBackground(new java.awt.Color(0, 0, 0));
-        botonvencimientos.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        botonvencimientos.setForeground(new java.awt.Color(255, 255, 255));
-        botonvencimientos.setText("VENCIMIENTOS");
-        botonvencimientos.setBorder(null);
-        botonvencimientos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonvencimientosActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("CONSULTAS");
-        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 4));
-
-        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-
-        jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
-
-        jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
-
-        jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(botonclientes))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botonventas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jSeparator1)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(botonpagos))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botonvencimientos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jSeparator4))))
-                .addContainerGap(60, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(botonventas, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(botonpagos, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
-                .addComponent(botonclientes, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(botonvencimientos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        gestionarventabutton.setBackground(new java.awt.Color(0, 0, 0));
-        gestionarventabutton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        gestionarventabutton.setForeground(new java.awt.Color(255, 255, 255));
-        gestionarventabutton.setText("GESTIONAR VENTA");
-        gestionarventabutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gestionarventabuttonActionPerformed(evt);
-            }
-        });
-
-        gestionarclientesbutton.setBackground(new java.awt.Color(0, 0, 0));
-        gestionarclientesbutton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        gestionarclientesbutton.setForeground(new java.awt.Color(255, 255, 255));
-        gestionarclientesbutton.setText("GESTIONAR CLIENTE");
-        gestionarclientesbutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gestionarclientesbuttonActionPerformed(evt);
-            }
-        });
-
-        gestionarpagobutton.setBackground(new java.awt.Color(0, 0, 0));
-        gestionarpagobutton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        gestionarpagobutton.setForeground(new java.awt.Color(255, 255, 255));
-        gestionarpagobutton.setText("GESTIONAR PAGO");
-        gestionarpagobutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gestionarpagobuttonActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestionar ventas.png"))); // NOI18N
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestionarcliente.png"))); // NOI18N
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestion pago.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/admin.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(177, 177, 177)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
+                        .addGap(43, 43, 43)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(79, 79, 79))
+                        .addGap(49, 49, 49))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(gestionarventabutton, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(153, 153, 153)
-                                .addComponent(gestionarpagobutton, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(gestionarclientesbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(252, 252, 252))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(297, 297, 297))))))
+                        .addComponent(gestionarasesorbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(153, 153, 153)
+                        .addComponent(gestionaradminbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(215, 215, 215))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(87, 87, 87)
+                .addGap(162, 162, 162)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(gestionarventabutton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(gestionarpagobutton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(gestionarclientesbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(gestionarasesorbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(gestionaradminbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -323,40 +171,19 @@ public class InterfazSuperAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonventasActionPerformed
+    private void gestionaradminbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionaradminbuttonActionPerformed
         // TODO add your handling code here:
-        System.out.println("venta");
-    }//GEN-LAST:event_botonventasActionPerformed
+        InterfazGestionarAdmin gadmin=new InterfazGestionarAdmin();
+        gadmin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_gestionaradminbuttonActionPerformed
 
-    private void botonpagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonpagosActionPerformed
+    private void gestionarasesorbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionarasesorbuttonActionPerformed
         // TODO add your handling code here:
-        System.out.println("pagos");
-    }//GEN-LAST:event_botonpagosActionPerformed
-
-    private void botonclientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonclientesActionPerformed
-        // TODO add your handling code here:
-        System.out.println("clientes");
-    }//GEN-LAST:event_botonclientesActionPerformed
-
-    private void botonvencimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonvencimientosActionPerformed
-        // TODO add your handling code here:
-        System.out.println("vencimientos");
-    }//GEN-LAST:event_botonvencimientosActionPerformed
-
-    private void gestionarpagobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionarpagobuttonActionPerformed
-        // TODO add your handling code here:
-        System.out.println("gestionar pago");
-    }//GEN-LAST:event_gestionarpagobuttonActionPerformed
-
-    private void gestionarclientesbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionarclientesbuttonActionPerformed
-        // TODO add your handling code here:
-        System.out.println("gestionar clientes");
-    }//GEN-LAST:event_gestionarclientesbuttonActionPerformed
-
-    private void gestionarventabuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionarventabuttonActionPerformed
-        // TODO add your handling code here:
-        System.out.println("gestionar venta");
-    }//GEN-LAST:event_gestionarventabuttonActionPerformed
+        InterfazGestionarAsesor gasesor=new InterfazGestionarAsesor();
+        gasesor.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_gestionarasesorbuttonActionPerformed
 
     private void botonsalirbotonlogin(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonsalirbotonlogin
         // TODO add your handling code here:
@@ -372,18 +199,7 @@ public class InterfazSuperAdmin extends javax.swing.JFrame {
         botonsalir.setOpaque(false);
         botonsalir.setContentAreaFilled(false);
         botonsalir.setBorderPainted(false);
-        botonventas.setOpaque(false);
-        botonventas.setContentAreaFilled(false);
-        botonventas.setBorderPainted(false);
-        botonpagos.setOpaque(false);
-        botonpagos.setContentAreaFilled(false);
-        botonpagos.setBorderPainted(false);
-        botonclientes.setOpaque(false);
-        botonclientes.setContentAreaFilled(false);
-        botonclientes.setBorderPainted(false);
-        botonvencimientos.setOpaque(false);
-        botonvencimientos.setContentAreaFilled(false);
-        botonvencimientos.setBorderPainted(false);
+        
     }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -425,27 +241,14 @@ public class InterfazSuperAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonclientes;
-    private javax.swing.JButton botonpagos;
     private javax.swing.JButton botonsalir;
-    private javax.swing.JButton botonsalir1;
-    private javax.swing.JButton botonvencimientos;
-    private javax.swing.JButton botonventas;
-    private javax.swing.JButton gestionarclientesbutton;
-    private javax.swing.JButton gestionarpagobutton;
-    private javax.swing.JButton gestionarventabutton;
+    private javax.swing.JButton gestionaradminbutton;
+    private javax.swing.JButton gestionarasesorbutton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
     // End of variables declaration//GEN-END:variables
 }

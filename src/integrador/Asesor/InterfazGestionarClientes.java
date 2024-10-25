@@ -62,7 +62,7 @@ public class InterfazGestionarClientes extends javax.swing.JFrame {
         botonsalir.setBackground(new java.awt.Color(0, 0, 0));
         botonsalir.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         botonsalir.setForeground(new java.awt.Color(255, 255, 255));
-        botonsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/boton salir.png"))); // NOI18N
+        botonsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/boton salir.png"))); // NOI18N
         botonsalir.setBorder(null);
         botonsalir.setMaximumSize(new java.awt.Dimension(10, 10));
         botonsalir.setMinimumSize(new java.awt.Dimension(10, 10));
@@ -147,26 +147,26 @@ public class InterfazGestionarClientes extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(212, 175, 55), 3, true));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clientepequeño.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/clientepequeño.png"))); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         jLabel4.setText("GESTIONAR CLIENTE");
 
-        botonagregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/boton agregar.png"))); // NOI18N
+        botonagregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/boton agregar.png"))); // NOI18N
         botonagregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonagregarActionPerformed(evt);
             }
         });
 
-        botoneditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/boton editar.png"))); // NOI18N
+        botoneditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/boton editar.png"))); // NOI18N
         botoneditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botoneditarActionPerformed(evt);
             }
         });
 
-        botoneliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/boton eliminar.png"))); // NOI18N
+        botoneliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/boton eliminar.png"))); // NOI18N
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
@@ -220,7 +220,7 @@ public class InterfazGestionarClientes extends javax.swing.JFrame {
         jTextField1.setText("CEDULA:");
         jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(212, 175, 55), 5));
 
-        botonbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/boton buscar.png"))); // NOI18N
+        botonbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/boton buscar.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

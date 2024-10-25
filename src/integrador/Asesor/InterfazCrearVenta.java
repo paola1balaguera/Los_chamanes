@@ -77,7 +77,7 @@ public class InterfazCrearVenta extends javax.swing.JFrame {
         botonsalir.setBackground(new java.awt.Color(0, 0, 0));
         botonsalir.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         botonsalir.setForeground(new java.awt.Color(255, 255, 255));
-        botonsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/boton salir.png"))); // NOI18N
+        botonsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/boton salir.png"))); // NOI18N
         botonsalir.setBorder(null);
         botonsalir.setMaximumSize(new java.awt.Dimension(10, 10));
         botonsalir.setMinimumSize(new java.awt.Dimension(10, 10));
@@ -118,7 +118,7 @@ public class InterfazCrearVenta extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(212, 175, 55), 3, true));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ventas chiquito.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ventas chiquito.png"))); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         jLabel4.setText("NUEVA VENTA");
@@ -184,8 +184,6 @@ public class InterfazCrearVenta extends javax.swing.JFrame {
                 botonguardarActionPerformed(evt);
             }
         });
-
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo.png"))); // NOI18N
 
         campocuotas.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         campocuotas.setForeground(new java.awt.Color(204, 204, 204));

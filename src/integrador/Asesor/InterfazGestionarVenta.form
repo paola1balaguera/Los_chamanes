@@ -113,7 +113,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/boton salir.png"/>
+              <Image iconType="3" name="/IMG/boton salir.png"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
@@ -332,7 +332,7 @@
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/ventas chiquito.png"/>
+                  <Image iconType="3" name="/IMG/ventas chiquito.png"/>
                 </Property>
               </Properties>
             </Component>
@@ -347,7 +347,7 @@
             <Component class="javax.swing.JButton" name="botonagregar">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/boton agregar.png"/>
+                  <Image iconType="3" name="/IMG/boton agregar.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -357,7 +357,7 @@
             <Component class="javax.swing.JButton" name="botoneditar">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/boton editar.png"/>
+                  <Image iconType="3" name="/IMG/boton editar.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -367,7 +367,7 @@
             <Component class="javax.swing.JButton" name="botoneliminar">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/boton eliminar.png"/>
+                  <Image iconType="3" name="/IMG/boton eliminar.png"/>
                 </Property>
               </Properties>
             </Component>
@@ -407,11 +407,14 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botonbuscar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/boton buscar.png"/>
+              <Image iconType="3" name="/IMG/boton buscar.png"/>
             </Property>
           </Properties>
         </Component>

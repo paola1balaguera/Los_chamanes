@@ -49,6 +49,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,7 +67,7 @@ public class InterfazAdmin extends javax.swing.JFrame {
         botonsalir.setBackground(new java.awt.Color(0, 0, 0));
         botonsalir.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         botonsalir.setForeground(new java.awt.Color(255, 255, 255));
-        botonsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/boton salir.png"))); // NOI18N
+        botonsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/boton salir.png"))); // NOI18N
         botonsalir.setBorder(null);
         botonsalir.setMaximumSize(new java.awt.Dimension(10, 10));
         botonsalir.setMinimumSize(new java.awt.Dimension(10, 10));
@@ -246,11 +248,11 @@ public class InterfazAdmin extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectos.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/gestion pago.png"))); // NOI18N
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestionarcliente.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/proyectos.png"))); // NOI18N
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestion pago.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ASESOR IMG.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -275,21 +277,33 @@ public class InterfazAdmin extends javax.swing.JFrame {
                                 .addGap(244, 244, 244))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(90, 90, 90)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(82, 82, 82))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(87, 87, 87)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel5)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(gestionarAsesorbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(gestionarproyectosbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -333,32 +347,44 @@ public class InterfazAdmin extends javax.swing.JFrame {
 
     private void botonpagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonpagosActionPerformed
         // TODO add your handling code here:
-        System.out.println("pagos");
+        InterfazConsultaPagos cpago=new InterfazConsultaPagos();
+        cpago.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonpagosActionPerformed
 
     private void botonclientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonclientesActionPerformed
         // TODO add your handling code here:
-        System.out.println("clientes");
+        InterfazConsultaClientes cclientes=new InterfazConsultaClientes();
+        cclientes.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonclientesActionPerformed
 
     private void botonvencimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonvencimientosActionPerformed
         // TODO add your handling code here:
-        System.out.println("vencimientos");
+        InterfazConsultaVencimientos cvencimientos=new InterfazConsultaVencimientos();
+        cvencimientos.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonvencimientosActionPerformed
 
     private void gestionarproyectosbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionarproyectosbuttonActionPerformed
         // TODO add your handling code here:
-        System.out.println("gestionar pago");
+        InterfazGestionarProyecto gproyecto=new InterfazGestionarProyecto();
+        gproyecto.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_gestionarproyectosbuttonActionPerformed
 
     private void gestionarpagosbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionarpagosbuttonActionPerformed
         // TODO add your handling code here:
-        System.out.println("gestionar clientes");
+        InterfazGestionarPagos gpagos=new InterfazGestionarPagos();
+        gpagos.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_gestionarpagosbuttonActionPerformed
 
     private void gestionarAsesorbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionarAsesorbuttonActionPerformed
         // TODO add your handling code here:
-        System.out.println("gestionar venta");
+        InterfazGestionarAsesor gasesor=new InterfazGestionarAsesor();
+        gasesor.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_gestionarAsesorbuttonActionPerformed
 
     /**
@@ -443,6 +469,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

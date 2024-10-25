@@ -56,7 +56,7 @@ public class InterfazConsultaMisventas extends javax.swing.JFrame {
         botonsalir.setBackground(new java.awt.Color(0, 0, 0));
         botonsalir.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         botonsalir.setForeground(new java.awt.Color(255, 255, 255));
-        botonsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/boton salir.png"))); // NOI18N
+        botonsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/boton salir.png"))); // NOI18N
         botonsalir.setBorder(null);
         botonsalir.setMaximumSize(new java.awt.Dimension(10, 10));
         botonsalir.setMinimumSize(new java.awt.Dimension(10, 10));
