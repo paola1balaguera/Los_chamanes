@@ -1,0 +1,379 @@
+CREATE TABLE PROYECTO
+(CODIGO_PROYECTO VARCHAR(8) CONSTRAINT PRO_COD_PRO_PK PRIMARY KEY,
+NOMBRE VARCHAR(40) CONSTRAINT PRO_NOM_NN NOT NULL,
+DIRECCION VARCHAR(20) CONSTRAINT PROO_DIR_NN NOT NULL);
+
+INSERT INTO PROYECTO 
+VALUES ('&CODIGO_PROYECTO', '&NOMBRE', '&DIRECCION');
+
+INSERT INTO PROYECTO (CODIGO_PROYECTO, NOMBRE, DIRECCION) VALUES
+('P-001', 'Condominio El Arco', 'Calle 1 # 1-1'),
+('P-002', 'Edificios Mayagüez', 'Calle 2 # 2-2'),
+('P-003', 'Residencial La Esperanza', 'Calle 3 # 3-3'),
+('P-004', 'Torres del Sol', 'Calle 4 # 4-4'),
+('P-005', 'Villas del Río', 'Calle 5 # 5-5'),
+('P-006', 'Conjunto Habitacional El Paraíso', 'Calle 6 # 6-6'),
+('P-007', 'Apartamentos Jardines de Bogotá', 'Calle 7 # 7-7'),
+('P-008', 'Edificio La Cumbre', 'Calle 8 # 8-8'),
+('P-009', 'Condominio Vista Verde', 'Calle 9 # 9-9'),
+('P-010', 'Residencial La Sabana', 'Calle 10 # 10-10');
+
+
+-------------------
+CREATE TABLE TRABAJADOR 
+(CED_TRABAJADOR NUMBER(8) CONSTRAINT TRA_CED_TRA_PK PRIMARY KEY,
+ NOMBRE_COMPLETO VARCHAR(40) CONSTRAINT TRA_NOMBRE_COMPLETO_NN NOT NULL,
+ CELULAR NUMBER(10) CONSTRAINT ASESOR_CELULAR_NN NOT NULL,
+ CORREO_ELECTRONICO VARCHAR(20) CONSTRAINT TRA_COR_ELE_NN NOT NULL,
+ DIRECCION_RESIDENCIA VARCHAR(20),  
+ CONTRASENA VARCHAR(10) CONSTRAINT TRA_CON_NN NOT NULL,  
+ ESTADO VARCHAR2(10) CONSTRAINT TRA_EST_NN NOT NULL,
+ CONSTRAINT TRA_EST_CH CHECK (ESTADO IN ('Activo', 'Inactivo')));
+
+INSERT INTO TRABAJADOR (CED_TRABAJADOR, NOMBRE_COMPLETO, CELULAR, CORREO_ELECTRONICO, DIRECCION_RESIDENCIA, CONTRASENA, ESTADO) VALUES 
+(10000001, 'Juan Pérez', 3001234567, 'juan.perez@gmail.com', 'Carrera 1 # 1-1', '123456', 'Activo'),
+(10000002, 'María López', 3002345678, 'maria.lopez@gmail.com', 'Carrera 2 # 2-2', 'abcdef', 'Activo'),
+(10000003, 'Andrés García', 3003456789, 'andres.garcia@gmail.com', 'Carrera 3 # 3-3', 'ghijkl', 'Inactivo'),
+(10000004, 'Ana Martínez', 3004567890, 'ana.martinez@gmail.com', 'Carrera 4 # 4-4', 'mnopqr', 'Activo'),
+(10000005, 'Luis Hernández', 3005678901, 'luis.hernandez@gmail.com', 'Carrera 5 # 5-5', 'stuvwx', 'Activo'),
+(10000006, 'Claudia Ruiz', 3006789012, 'claudia.ruiz@gmail.com', 'Carrera 6 # 6-6', 'yzabcd', 'Inactivo'),
+(10000007, 'Carlos Torres', 3007890123, 'carlos.torres@gmail.com', 'Carrera 7 # 7-7', 'efghij', 'Activo'),
+(10000008, 'Laura Jiménez', 3008901234, 'laura.jimenez@gmail.com', 'Carrera 8 # 8-8', 'klmnop', 'Activo');
+
+
+INSERT INTO TRABAJADOR 
+VALUES ('&CED_TRABAJADOR', '&NOMBRE_COMPLETO', '&CELULAR', '&CORREO_ELECTRONICO', '&DIRECCION_RESIDENCIA', '&CONTRASENA', '&ESTADO');
+
+
+--------------------
+CREATE TABLE ROL
+(ID_ROL NUMBER(8) CONSTRAINT ROL_ID_PK PRIMARY KEY,
+ NOMBRE_ROL VARCHAR(20) CONSTRAINT ROL_NOM_NN NOT NULL);
+
+INSERT INTO ROL (ID_ROL, NOMBRE_ROL) VALUES 
+(1, 'Administrador'),
+(2, 'Asesor'),
+(3, 'Super admin');
+
+
+
+INSERT INTO ROL 
+VALUES ('&ID_ROL', '&NOMBRE_ROL');
+
+--------------------
+CREATE TABLE ROL_TRABAJADOR 
+(ID_ROL NUMBER(8),
+ CED_TRABAJADOR NUMBER(8),
+ CONSTRAINT ROL_TRA_ID_ROL_FK FOREIGN KEY (ID_ROL) REFERENCES ROL(ID_ROL),
+ CONSTRAINT ROL_TRA_CED_TRA_FK FOREIGN KEY (CED_TRABAJADOR) REFERENCES TRABAJADOR(CED_TRABAJADOR));
+
+
+INSERT INTO ROL_TRABAJADOR (ID_ROL, CED_TRABAJADOR) VALUES 
+(1, 10000001), -- Juan Pérez
+(1, 10000002), -- María López
+(2, 10000003), -- Andrés García
+(2, 10000004), -- Ana Martínez
+(2, 10000005), -- Luis Hernández
+(3, 10000006), -- Claudia Ruiz
+(3, 10000007), -- Carlos Torres
+(2, 10000008); -- Laura Jiménez
+
+
+INSERT INTO ROL_TRABAJADOR
+VALUES ('&ID_ROL', '&CED_TRABAJADOR');
+
+
+
+--------------------
+CREATE TABLE CLIENTE 
+( CEDULA_CLIENTE NUMBER(8) CONSTRAINT CLIENTE_CEDULA_PK PRIMARY KEY,
+  NOMBRE_COMPLETO VARCHAR(40) CONSTRAINT CLIENTE_NOMBRE_COMPLETO_NN NOT NULL,
+  CELULAR NUMBER(10) CONSTRAINT CLIENTE_CELULAR_NN NOT NULL,
+  CORREO_ELECTRONICO VARCHAR(20) CONSTRAINT CLIENTE_CORREO_ELECTRONICO_NN NOT NULL,
+  DIRECCION_RESIDENCIA VARCHAR(20),
+  INGRESOS FLOAT(20) CONSTRAINT CLIENTE_INGRESOS_NN NOT NULL);
+
+INSERT INTO CLIENTE (CEDULA_CLIENTE, NOMBRE_COMPLETO, CELULAR, CORREO_ELECTRONICO, DIRECCION_RESIDENCIA, INGRESOS) VALUES 
+(90000001, 'Pedro González', 3101234567, 'pedro.gonzalez@gmail.com', 'Calle 10 # 1-1', 2000000),
+(90000002, 'Sofía Castro', 3102345678, 'sofia.castro@gmail.com', 'Calle 11 # 2-2', 2500000),
+(90000003, 'Luis Rodríguez', 3103456789, 'luis.rodriguez@gmail.com', 'Calle 12 # 3-3', 3000000),
+(90000004, 'Lucía Mendoza', 3104567890, 'lucia.mendoza@gmail.com', 'Calle 13 # 4-4', 2800000),
+(90000005, 'Gabriel Medina', 3105678901, 'gabriel.medina@gmail.com', 'Calle 14 # 5-5', 3500000),
+(90000006, 'Valentina Salazar', 3106789012, 'valentina.salazar@gmail.com', 'Calle 15 # 6-6', 2700000),
+(90000007, 'Andrés Cárdenas', 3107890123, 'andres.cardenas@gmail.com', 'Calle 16 # 7-7', 4000000),
+(90000008, 'Carolina Moreno', 3108901234, 'carolina.moreno@gmail.com', 'Calle 17 # 8-8', 5000000);
+
+
+
+INSERT INTO CLIENTE 
+VALUES ('&CEDULA_CLIENTE', '&NOMBRE_COMPLETO', '&CELULAR', '&CORREO_ELECTRONICO','&DIRECCION_RESIDENCIA','&INGRESOS');
+
+
+------------------
+CREATE TABLE TORRE 
+( CODIGO_TORRE VARCHAR(8) CONSTRAINT TOR_COD_TOR_PK PRIMARY KEY,
+  FECHA_CONSTRUCCION DATE CONSTRAINT TOR_FEC_CONS_NN NOT NULL,
+  CODIGO_PROYECTO VARCHAR(8) CONSTRAINT TOR_COD_PRO_NN NOT NULL,
+  CONSTRAINT TOR_COD_PRO_FK FOREIGN KEY (CODIGO_PROYECTO) REFERENCES PROYECTO(CODIGO_PROYECTO));
+
+INSERT INTO TORRE (CODIGO_TORRE, FECHA_CONSTRUCCION, CODIGO_PROYECTO) VALUES 
+('T-001', TO_DATE('2023-01-15', 'YYYY-MM-DD'), 'P-001'),
+('T-002', TO_DATE('2023-02-20', 'YYYY-MM-DD'), 'P-002'),
+('T-003', TO_DATE('2023-03-10', 'YYYY-MM-DD'), 'P-003'),
+('T-004', TO_DATE('2023-04-05', 'YYYY-MM-DD'), 'P-004'),
+('T-005', TO_DATE('2023-05-25', 'YYYY-MM-DD'), 'P-005'),
+('T-006', TO_DATE('2023-06-30', 'YYYY-MM-DD'), 'P-006'),
+('T-007', TO_DATE('2023-07-15', 'YYYY-MM-DD'), 'P-007'),
+('T-008', TO_DATE('2023-08-20', 'YYYY-MM-DD'), 'P-008');
+
+
+INSERT INTO TORRE  
+VALUES ('&CODIGO_TORRE', TO_DATE('&FECHA_CONSTRUCCION', 'DD-MM-YYYY'), '&CODIGO_PROYECTO');
+
+----------------------
+CREATE TABLE PROPIEDAD
+(MATRICULA VARCHAR2(8) CONSTRAINT PROP_MAT_PK PRIMARY KEY,
+ VALOR FLOAT(20) CONSTRAINT PROP_VAL_NN NOT NULL,
+ TIPO VARCHAR2(20) CONSTRAINT PROP_TIP_NN NOT NULL,  
+ AREA FLOAT(5) CONSTRAINT PROP_ARE_NN NOT NULL,
+ ESTADO VARCHAR2(10) CONSTRAINT PROP_EST_NN NOT NULL,
+ PISO NUMBER(4) CONSTRAINT PROP_PIS_NN NOT NULL,
+ CODIGO_TORRE VARCHAR2(8) CONSTRAINT PROP_COD_TOR_NN NOT NULL,
+ CONSTRAINT PROP_TIP_CHK CHECK (TIPO IN ('Apartamento', 'Garaje', 'Local')),
+ CONSTRAINT PROP_EST_CHK CHECK (ESTADO IN ('Disponible', 'Vendido')),
+ CONSTRAINT PROP_COD_TOR_FK FOREIGN KEY (CODIGO_TORRE) REFERENCES TORRE(CODIGO_TORRE));
+
+
+-- Torre 1
+INSERT INTO PROPIEDAD (MATRICULA, VALOR, TIPO, AREA, ESTADO, PISO, CODIGO_TORRE) VALUES 
+('M-001', 120000000, 'Apartamento', 50, 'Disponible', 5, 'T-001'),
+('M-002', 40000000, 'Local', 10, 'Disponible', 1, 'T-001'),
+('M-003', 10000000, 'Garaje', 5, 'Disponible', 1, 'T-001'),
+('M-004', 120000000, 'Apartamento', 50, 'Disponible', 6, 'T-001'),
+('M-005', 40000000, 'Local', 10, 'Disponible', 1, 'T-001'),
+('M-006', 10000000, 'Garaje', 5, 'Disponible', 2, 'T-001'),
+('M-007', 120000000, 'Apartamento', 50, 'Disponible', 7, 'T-001'),
+('M-008', 40000000, 'Local', 10, 'Disponible', 1, 'T-001'),
+('M-009', 10000000, 'Garaje', 5, 'Disponible', 3, 'T-001'),
+('M-010', 120000000, 'Apartamento', 50, 'Disponible', 8, 'T-001'),
+('M-011', 40000000, 'Local', 10, 'Disponible', 1, 'T-001'),
+('M-012', 10000000, 'Garaje', 5, 'Disponible', 4, 'T-001'),
+('M-013', 120000000, 'Apartamento', 50, 'Disponible', 9, 'T-001'),
+('M-014', 40000000, 'Local', 10, 'Disponible', 1, 'T-001'),
+('M-015', 10000000, 'Garaje', 5, 'Disponible', 5, 'T-001');
+
+-- Torre 2
+INSERT INTO PROPIEDAD (MATRICULA, VALOR, TIPO, AREA, ESTADO, PISO, CODIGO_TORRE) VALUES 
+('M-016', 120000000, 'Apartamento', 50, 'Disponible', 5, 'T-002'),
+('M-017', 40000000, 'Local', 10, 'Disponible', 1, 'T-002'),
+('M-018', 10000000, 'Garaje', 5, 'Disponible', 1, 'T-002'),
+('M-019', 120000000, 'Apartamento', 50, 'Disponible', 6, 'T-002'),
+('M-020', 40000000, 'Local', 10, 'Disponible', 1, 'T-002'),
+('M-021', 10000000, 'Garaje', 5, 'Disponible', 2, 'T-002'),
+('M-022', 120000000, 'Apartamento', 50, 'Disponible', 7, 'T-002'),
+('M-023', 40000000, 'Local', 10, 'Disponible', 1, 'T-002'),
+('M-024', 10000000, 'Garaje', 5, 'Disponible', 3, 'T-002'),
+('M-025', 120000000, 'Apartamento', 50, 'Disponible', 8, 'T-002'),
+('M-026', 40000000, 'Local', 10, 'Disponible', 1, 'T-002'),
+('M-027', 10000000, 'Garaje', 5, 'Disponible', 4, 'T-002'),
+('M-028', 120000000, 'Apartamento', 50, 'Disponible', 9, 'T-002'),
+('M-029', 40000000, 'Local', 10, 'Disponible', 1, 'T-002'),
+('M-030', 10000000, 'Garaje', 5, 'Disponible', 5, 'T-002');
+
+-- Torre 3
+INSERT INTO PROPIEDAD (MATRICULA, VALOR, TIPO, AREA, ESTADO, PISO, CODIGO_TORRE) VALUES 
+('M-031', 120000000, 'Apartamento', 50, 'Disponible', 5, 'T-003'),
+('M-032', 40000000, 'Local', 10, 'Disponible', 1, 'T-003'),
+('M-033', 10000000, 'Garaje', 5, 'Disponible', 1, 'T-003'),
+('M-034', 120000000, 'Apartamento', 50, 'Disponible', 6, 'T-003'),
+('M-035', 40000000, 'Local', 10, 'Disponible', 1, 'T-003'),
+('M-036', 10000000, 'Garaje', 5, 'Disponible', 2, 'T-003'),
+('M-037', 120000000, 'Apartamento', 50, 'Disponible', 7, 'T-003'),
+('M-038', 40000000, 'Local', 10, 'Disponible', 1, 'T-003'),
+('M-039', 10000000, 'Garaje', 5, 'Disponible', 3, 'T-003'),
+('M-040', 120000000, 'Apartamento', 50, 'Disponible', 8, 'T-003'),
+('M-041', 40000000, 'Local', 10, 'Disponible', 1, 'T-003'),
+('M-042', 10000000, 'Garaje', 5, 'Disponible', 4, 'T-003'),
+('M-043', 120000000, 'Apartamento', 50, 'Disponible', 9, 'T-003'),
+('M-044', 40000000, 'Local', 10, 'Disponible', 1, 'T-003'),
+('M-045', 10000000, 'Garaje', 5, 'Disponible', 5, 'T-003');
+
+-- Torre 4
+INSERT INTO PROPIEDAD (MATRICULA, VALOR, TIPO, AREA, ESTADO, PISO, CODIGO_TORRE) VALUES 
+('M-046', 120000000, 'Apartamento', 50, 'Disponible', 5, 'T-004'),
+('M-047', 40000000, 'Local', 10, 'Disponible', 1, 'T-004'),
+('M-048', 10000000, 'Garaje', 5, 'Disponible', 1, 'T-004'),
+('M-049', 120000000, 'Apartamento', 50, 'Disponible', 6, 'T-004'),
+('M-050', 40000000, 'Local', 10, 'Disponible', 1, 'T-004'),
+('M-051', 10000000, 'Garaje', 5, 'Disponible', 2, 'T-004'),
+('M-052', 120000000, 'Apartamento', 50, 'Disponible', 7, 'T-004'),
+('M-053', 40000000, 'Local', 10, 'Disponible', 1, 'T-004'),
+('M-054', 10000000, 'Garaje', 5, 'Disponible', 3, 'T-004'),
+('M-055', 120000000, 'Apartamento', 50, 'Disponible', 8, 'T-004'),
+('M-056', 40000000, 'Local', 10, 'Disponible', 1, 'T-004'),
+('M-057', 10000000, 'Garaje', 5, 'Disponible', 4, 'T-004'),
+('M-058', 120000000, 'Apartamento', 50, 'Disponible', 9, 'T-004'),
+('M-059', 40000000, 'Local', 10, 'Disponible', 1, 'T-004'),
+('M-060', 10000000, 'Garaje', 5, 'Disponible', 5, 'T-004');
+
+-- Torre 5
+INSERT INTO PROPIEDAD (MATRICULA, VALOR, TIPO, AREA, ESTADO, PISO, CODIGO_TORRE) VALUES 
+('M-061', 120000000, 'Apartamento', 50, 'Disponible', 5, 'T-005'),
+('M-062', 40000000, 'Local', 10, 'Disponible', 1, 'T-005'),
+('M-063', 10000000, 'Garaje', 5, 'Disponible', 1, 'T-005'),
+('M-064', 120000000, 'Apartamento', 50, 'Disponible', 6, 'T-005'),
+('M-065', 40000000, 'Local', 10, 'Disponible', 1, 'T-005'),
+('M-066', 10000000, 'Garaje', 5, 'Disponible', 2, 'T-005'),
+('M-067', 120000000, 'Apartamento', 50, 'Disponible', 7, 'T-005'),
+('M-068', 40000000, 'Local', 10, 'Disponible', 1, 'T-005'),
+('M-069', 10000000, 'Garaje', 5, 'Disponible', 3, 'T-005'),
+('M-070', 120000000, 'Apartamento', 50, 'Disponible', 8, 'T-005'),
+('M-071', 40000000, 'Local', 10, 'Disponible', 1, 'T-005'),
+('M-072', 10000000, 'Garaje', 5, 'Disponible', 4, 'T-005'),
+('M-073', 120000000, 'Apartamento', 50, 'Disponible', 9, 'T-005'),
+('M-074', 40000000, 'Local', 10, 'Disponible', 1, 'T-005'),
+('M-075', 10000000, 'Garaje', 5, 'Disponible', 5, 'T-005');
+
+-- Torre 6
+INSERT INTO PROPIEDAD (MATRICULA, VALOR, TIPO, AREA, ESTADO, PISO, CODIGO_TORRE) VALUES 
+('M-076', 120000000, 'Apartamento', 50, 'Disponible', 5, 'T-006'),
+('M-077', 40000000, 'Local', 10, 'Disponible', 1, 'T-006'),
+('M-078', 10000000, 'Garaje', 5, 'Disponible', 1, 'T-006'),
+('M-079', 120000000, 'Apartamento', 50, 'Disponible', 6, 'T-006'),
+('M-080', 40000000, 'Local', 10, 'Disponible', 1, 'T-006'),
+('M-081', 10000000, 'Garaje', 5, 'Disponible', 2, 'T-006'),
+('M-082', 120000000, 'Apartamento', 50, 'Disponible', 7, 'T-006'),
+('M-083', 40000000, 'Local', 10, 'Disponible', 1, 'T-006'),
+('M-084', 10000000, 'Garaje', 5, 'Disponible', 3, 'T-006'),
+('M-085', 120000000, 'Apartamento', 50, 'Disponible', 8, 'T-006'),
+('M-086', 40000000, 'Local', 10, 'Disponible', 1, 'T-006'),
+('M-087', 10000000, 'Garaje', 5, 'Disponible', 4, 'T-006'),
+('M-088', 120000000, 'Apartamento', 50, 'Disponible', 9, 'T-006'),
+('M-089', 40000000, 'Local', 10, 'Disponible', 1, 'T-006'),
+('M-090', 10000000, 'Garaje', 5, 'Disponible', 5, 'T-006');
+
+-- Torre 7
+INSERT INTO PROPIEDAD (MATRICULA, VALOR, TIPO, AREA, ESTADO, PISO, CODIGO_TORRE) VALUES 
+('M-091', 120000000, 'Apartamento', 50, 'Disponible', 5, 'T-007'),
+('M-092', 40000000, 'Local', 10, 'Disponible', 1, 'T-007'),
+('M-093', 10000000, 'Garaje', 5, 'Disponible', 1, 'T-007'),
+('M-094', 120000000, 'Apartamento', 50, 'Disponible', 6, 'T-007'),
+('M-095', 40000000, 'Local', 10, 'Disponible', 1, 'T-007'),
+('M-096', 10000000, 'Garaje', 5, 'Disponible', 2, 'T-007'),
+('M-097', 120000000, 'Apartamento', 50, 'Disponible', 7, 'T-007'),
+('M-098', 40000000, 'Local', 10, 'Disponible', 1, 'T-007'),
+('M-099', 10000000, 'Garaje', 5, 'Disponible', 3, 'T-007'),
+('M-100', 120000000, 'Apartamento', 50, 'Disponible', 8, 'T-007'),
+('M-101', 40000000, 'Local', 10, 'Disponible', 1, 'T-007'),
+('M-102', 10000000, 'Garaje', 5, 'Disponible', 4, 'T-007'),
+('M-103', 120000000, 'Apartamento', 50, 'Disponible', 9, 'T-007'),
+('M-104', 40000000, 'Local', 10, 'Disponible', 1, 'T-007'),
+('M-105', 10000000, 'Garaje', 5, 'Disponible', 5, 'T-007');
+
+-- Torre 8
+INSERT INTO PROPIEDAD (MATRICULA, VALOR, TIPO, AREA, ESTADO, PISO, CODIGO_TORRE) VALUES 
+('M-106', 120000000, 'Apartamento', 50, 'Disponible', 5, 'T-008'),
+('M-107', 40000000, 'Local', 10, 'Disponible', 1, 'T-008'),
+('M-108', 10000000, 'Garaje', 5, 'Disponible', 1, 'T-008'),
+('M-109', 120000000, 'Apartamento', 50, 'Disponible', 6, 'T-008'),
+('M-110', 40000000, 'Local', 10, 'Disponible', 1, 'T-008'),
+('M-111', 10000000, 'Garaje', 5, 'Disponible', 2, 'T-008'),
+('M-112', 120000000, 'Apartamento', 50, 'Disponible', 7, 'T-008'),
+('M-113', 40000000, 'Local', 10, 'Disponible', 1, 'T-008'),
+('M-114', 10000000, 'Garaje', 5, 'Disponible', 3, 'T-008'),
+('M-115', 120000000, 'Apartamento', 50, 'Disponible', 8, 'T-008'),
+('M-116', 40000000, 'Local', 10, 'Disponible', 1, 'T-008'),
+('M-117', 10000000, 'Garaje', 5, 'Disponible', 4, 'T-008'),
+('M-118', 120000000, 'Apartamento', 50, 'Disponible', 9, 'T-008'),
+('M-119', 40000000, 'Local', 10, 'Disponible', 1, 'T-008'),
+('M-120', 10000000, 'Garaje', 5, 'Disponible', 5, 'T-008');
+
+
+
+INSERT INTO PROPIEDAD
+VALUES ('&MATRICULA', &VALOR, '&TIPO', &AREA, '&ESTADO', &PISO, '&CODIGO_TORRE');
+
+
+
+------------------
+CREATE TABLE VENTA
+( ID_VENTA NUMBER(8) CONSTRAINT VEN_ID_PK PRIMARY KEY,
+  METODO_PAGO VARCHAR2(20) CONSTRAINT VENT_METO_PAGO_NN NOT NULL,
+  PRECIO_TOTAL FLOAT(20) CONSTRAINT VEN_PREC_TOT_NN NOT NULL,
+  FECHA_VENTA DATE CONSTRAINT VEN_FEC_NN NOT NULL,
+  PORCENTAJE_INTERES FLOAT(5),
+  CANTIDAD_CUOTAS NUMBER(20),
+  VALOR_SUBSIDIO FLOAT(20),
+  CONSTRAINT VENT_METO_PAGO_CHK CHECK (METODO_PAGO IN ('Credito', 'Contado')),
+  MATRICULA VARCHAR(8) CONSTRAINT VEN_MAT_NN NOT NULL,
+  CONSTRAINT VEN_MAT_FK FOREIGN KEY (MATRICULA) REFERENCES PROPIEDAD(MATRICULA),
+  CEDULA_CLIENTE NUMBER(8) CONSTRAINT VEN_CED_CLI_NN NOT NULL,
+  CONSTRAINT VEN_CED_CLI_FK FOREIGN KEY (CEDULA_CLIENTE) REFERENCES CLIENTE(CEDULA_CLIENTE),
+  CED_TRABAJADOR NUMBER(8) CONSTRAINT VEN_CED_TRAB_NN NOT NULL,
+  CONSTRAINT VEN_CED_TRAB_FK FOREIGN KEY (CED_TRABAJADOR) REFERENCES TRABAJADOR(CED_TRABAJADOR));
+
+
+INSERT INTO VENTA (ID_VENTA, METODO_PAGO, PRECIO_TOTAL, FECHA_VENTA, PORCENTAJE_INTERES, CANTIDAD_CUOTAS, VALOR_SUBSIDIO, MATRICULA, CEDULA_CLIENTE, CED_TRABAJADOR) VALUES 
+(1, 'Credito', 120000000 * 1.2, TO_DATE('2023-09-01', 'YYYY-MM-DD'), 2, 12, 0, 'M-001', 90000001, 10000001),
+(2, 'Contado', 40000000, TO_DATE('2023-09-05', 'YYYY-MM-DD'), 0, 1, 0, 'M-002', 90000002, 10000002),
+(3, 'Credito', 10000000 * 1.2, TO_DATE('2023-09-10', 'YYYY-MM-DD'), 2, 6, 0, 'M-003', 90000003, 10000003),
+(4, 'Contado', 120000000, TO_DATE('2023-09-15', 'YYYY-MM-DD'), 0, 1, 0, 'M-004', 90000004, 10000004),
+(5, 'Credito', 40000000 * 1.2, TO_DATE('2023-09-20', 'YYYY-MM-DD'), 2, 10, 0, 'M-005', 90000005, 10000005),
+(6, 'Contado', 10000000, TO_DATE('2023-09-25', 'YYYY-MM-DD'), 0, 1, 0, 'M-006', 90000006, 10000006),
+(7, 'Credito', 120000000 * 1.2, TO_DATE('2023-09-30', 'YYYY-MM-DD'), 2, 15, 0, 'M-007', 90000007, 10000007),
+(8, 'Contado', 40000000, TO_DATE('2023-10-05', 'YYYY-MM-DD'), 0, 1, 0, 'M-008', 90000008, 10000008);
+
+
+
+INSERT INTO VENTA 
+VALUES ('&ID_VENTA', '&METODO_PAGO', &PRECIO_TOTAL, TO_DATE('&FECHA_VENTA', 'DD-MM-YYYY'), &PORCENTAJE_INTERES, '&CANTIDAD_CUOTAS', '&VALOR_SUBSIDIO', '&MATRICULA', '&CEDULA_CLIENTE', '&CED_TRABAJADOR');
+
+------------------
+CREATE TABLE DEUDA 
+( ID_DEUDA NUMBER(8) CONSTRAINT DEU_ID_DEU_PK PRIMARY KEY,
+  VALOR_CUOTA FLOAT(20) CONSTRAINT DEU_VAL_CUO_NN NOT NULL,
+  VALOR_DEUDA FLOAT(20) CONSTRAINT DEU_VAL_DEU_NN NOT NULL,
+  ID_VENTA NUMBER(8) CONSTRAINT DEU_ID_VENTA_NN NOT NULL,
+  CONSTRAINT DEU_ID_VENTA_FK FOREIGN KEY (ID_VENTA) REFERENCES VENTA(ID_VENTA));
+
+INSERT INTO DEUDA (ID_DEUDA, VALOR_CUOTA, VALOR_DEUDA, ID_VENTA) VALUES 
+(1, (120000000 * 1.2) / 12, (120000000 - 0) * 1.2, 1),
+(2, 0, 0, 2),  -- No hay deuda para pagos de contado
+(3, (10000000 * 1.2) / 6, (10000000 - 0) * 1.2, 3),
+(4, 0, 0, 4),  -- No hay deuda para pagos de contado
+(5, (40000000 * 1.2) / 10, (40000000 - 0) * 1.2, 5),
+(6, 0, 0, 6),  -- No hay deuda para pagos de contado
+(7, (120000000 * 1.2) / 15, (120000000 - 0) * 1.2, 7),
+(8, 0, 0, 8);  -- No hay deuda para pagos de contado
+
+
+INSERT INTO DEUDA  
+VALUES ('&ID_DEUDA', &VALOR_CUOTA, &VALOR_DEUDA, '&ID_VENTA');
+-----------------
+CREATE TABLE PAGO 
+(
+  ID_PAGO NUMBER(8) CONSTRAINT PAGO_ID_PAGO_PK PRIMARY KEY,
+  TIPO VARCHAR2(20) CONSTRAINT PAGO_TIPO_NN NOT NULL,
+  VALOR FLOAT(20) CONSTRAINT PAGO_VALOR_NN NOT NULL,
+  FECHA_PAGO DATE CONSTRAINT PAGO_FECHA_NN NOT NULL,
+  CED_TRABAJADOR NUMBER(8) CONSTRAINT PAGO_CED_TRABAJADOR_NN NOT NULL,
+  ID_DEUDA NUMBER(8) CONSTRAINT PAGO_ID_DEUDA_NN NOT NULL,
+  CONSTRAINT PAGO_TIPO_CHK CHECK (TIPO IN ('Cuota', 'Abono', 'Contado')),
+  CONSTRAINT PAGO_CED_TRABAJADOR_FK FOREIGN KEY (CED_TRABAJADOR) REFERENCES TRABAJADOR(CED_TRABAJADOR),
+  CONSTRAINT PAGO_ID_DEUDA_FK FOREIGN KEY (ID_DEUDA) REFERENCES DEUDA(ID_DEUDA));
+
+INSERT INTO PAGO (ID_PAGO, TIPO, VALOR, FECHA_PAGO, CED_TRABAJADOR, ID_DEUDA) VALUES 
+(1, 'Cuota', (120000000 * 1.2) / 12, TO_DATE('2023-10-01', 'YYYY-MM-DD'), 10000001, 1),
+(2, 'Cuota', (120000000 * 1.2) / 12, TO_DATE('2023-11-01', 'YYYY-MM-DD'), 10000001, 1),
+(3, 'Cuota', (120000000 * 1.2) / 12, TO_DATE('2023-12-01', 'YYYY-MM-DD'), 10000001, 1),
+(4, 'Abono', 3000000, TO_DATE('2023-10-15', 'YYYY-MM-DD'), 10000001, 1),
+(5, 'Contado', 40000000, TO_DATE('2023-09-05', 'YYYY-MM-DD'), 10000002, 2),
+(6, 'Cuota', (10000000 * 1.2) / 6, TO_DATE('2023-10-10', 'YYYY-MM-DD'), 10000003, 3),
+(7, 'Cuota', (10000000 * 1.2) / 6, TO_DATE('2023-11-10', 'YYYY-MM-DD'), 10000003, 3),
+(8, 'Cuota', (10000000 * 1.2) / 6, TO_DATE('2023-12-10', 'YYYY-MM-DD'), 10000003, 3);
+
+
+
+INSERT INTO PAGO  
+VALUES ('&ID_PAGO', '&TIPO', '&VALOR', TO_DATE('&FECHA_PAGO', 'DD-MM-YYYY'), '&CED_TRABAJADOR', '&ID_DEUDA');
+
