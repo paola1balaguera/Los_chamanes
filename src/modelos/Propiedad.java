@@ -24,6 +24,7 @@ public class Propiedad implements Serializable {
     private float valor;
     private float area;
     private boolean estado;
+    private int piso;
     private Torre torre;
 
     public String getMatricula() {

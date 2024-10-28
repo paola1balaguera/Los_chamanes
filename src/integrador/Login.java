@@ -4,6 +4,7 @@
  */
 package integrador;
 
+import controladores.TrabajadorControlador;
 import integrador.SuperAdmin.InterfazSuperAdmin;
 import integrador.Asesor.InterfazAsesor;
 import integrador.ADMIN.InterfazAdmin;
@@ -51,7 +52,6 @@ public class Login extends javax.swing.JFrame {
         jTextField2.setFont(new java.awt.Font("Monoround", 0, 36)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(204, 204, 204));
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText("USUARIO");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usuariologin(evt);
@@ -157,8 +157,39 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonlogin(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonlogin
+        
+        TrabajadorControlador trabajadorControlador = new TrabajadorControlador();
+        
+        int cedula = Integer.parseInt(jTextField2.getText());
+        char[] contrasena = password.getPassword();
+                // Convertir a String para mostrar
+        String passwordStr = new String(contrasena);
+        int role = rol.getSelectedIndex();
+        System.out.println(rol.getSelectedIndex());
+        System.out.println(cedula);
+        System.out.println(passwordStr);
+        
+        if(trabajadorControlador.iniciarSesion(cedula, passwordStr, role) == true) {
+            if (role == 0) {
+                InterfazAsesor ia = new InterfazAsesor();
+                
+                ia.setVisible(true);
+            } else if(role == 1) {
+                InterfazAdmin iadm = new InterfazAdmin();
+            
+                iadm.setVisible(true);
+            } else if(role == 2) {
+                InterfazSuperAdmin iasa = new InterfazSuperAdmin();
+                iasa.setVisible(true);
+            }
+            this.setVisible(false);
+        }
+        
+        
+        
+        
         // TODO add your handling code here:
-        if(rol.getSelectedIndex()== 0){
+        /*if(rol.getSelectedIndex()== 0){
             InterfazAsesor interfazAs= new InterfazAsesor();
             interfazAs.setVisible(true);
             this.setVisible(false);
@@ -174,7 +205,7 @@ public class Login extends javax.swing.JFrame {
             this.setVisible(false);
         }
         else{
-            System.out.println("error");}
+            System.out.println("error");}*/
         
 
     }//GEN-LAST:event_botonlogin

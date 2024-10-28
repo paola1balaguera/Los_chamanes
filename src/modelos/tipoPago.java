@@ -10,7 +10,7 @@ package modelos;
  *
  * @author TheBestGroupOfTheChamans
  */
-public enum tipoPago {
+public enum TipoPago {
     CUOTA,
     ABONO,
     PAGO_TOTAL_DE_CONTADO

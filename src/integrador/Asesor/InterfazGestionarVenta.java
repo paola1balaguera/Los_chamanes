@@ -4,8 +4,12 @@
  */
 package integrador.Asesor;
 
+import controladores.VentaControlador;
 import integrador.ADMIN.*;
 import integrador.Login;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import modelos.Venta;
 
 /**
  *
@@ -13,11 +17,21 @@ import integrador.Login;
  */
 public class InterfazGestionarVenta extends javax.swing.JFrame {
 
+    private DefaultTableModel tableModel;
+    
+    
     /**
      * Creates new form InterfazAdmin
      */
     public InterfazGestionarVenta() {
         initComponents();
+        tableModel = new DefaultTableModel(new String[]{"ID", "METODO", "PRECIO", "FECHA"}, 0);
+        tabla.setModel(tableModel);
+        VentaControlador ventaControlador = new VentaControlador();
+        for (Venta venta : ventaControlador.listarVentas()) {
+            tableModel.addRow(new Object[]{venta.getId(), venta.isMetodo_pago(), venta.getPrecio_total(), venta.getFec_venta()});
+        }
+        tabla.setModel(tableModel);
         transparenciabutton();
     }
 
@@ -436,4 +450,8 @@ public class InterfazGestionarVenta extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
+
+    private void listarVentas() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

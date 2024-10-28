@@ -5,6 +5,7 @@
 package modelos;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,15 +21,21 @@ public class Proyecto implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer codigo;
+    private String codigo;
     private String nombre;
     private String direccion;
+    
+    public Proyecto(String id, String nombre, String direccion) {
+        this.codigo = id;
+        this.nombre = nombre;
+        this.direccion = direccion;
+    }
 
-    public Integer getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(Integer codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 

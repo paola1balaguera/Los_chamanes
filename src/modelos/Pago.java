@@ -5,6 +5,7 @@
 package modelos;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,14 +21,59 @@ public class Pago implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
+    private TipoPago tipo;
+    private float valor;
+    private Date fecha_pago;
+    private Deuda deuda;
+    private Trabajador asesor;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
+    }
+
+    public TipoPago getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoPago tipo) {
+        this.tipo = tipo;
+    }
+
+    public float getValor() {
+        return valor;
+    }
+
+    public void setValor(float valor) {
+        this.valor = valor;
+    }
+
+    public Date getFecha_pago() {
+        return fecha_pago;
+    }
+
+    public void setFecha_pago(Date fecha_pago) {
+        this.fecha_pago = fecha_pago;
+    }
+
+    public Deuda getDeuda() {
+        return deuda;
+    }
+
+    public void setDeuda(Deuda deuda) {
+        this.deuda = deuda;
+    }
+
+    public Trabajador getAsesor() {
+        return asesor;
+    }
+
+    public void setAsesor(Trabajador asesor) {
+        this.asesor = asesor;
     }
 
     @Override

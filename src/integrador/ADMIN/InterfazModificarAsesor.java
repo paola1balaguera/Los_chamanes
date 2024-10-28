@@ -348,7 +348,7 @@ public class InterfazModificarAsesor extends javax.swing.JFrame {
 
     private void botonregresar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonregresar
         // TODO add your handling code here:
-        InterfazGestionarAdmin gestionarasesor=new InterfazGestionarAdmin();
+        InterfazGestionarAsesor gestionarasesor=new InterfazGestionarAsesor();
         gestionarasesor.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_botonregresar

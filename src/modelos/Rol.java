@@ -20,15 +20,15 @@ public class Rol implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer codigo;
+    private Integer id;
     private String nombre;
     
-    public Integer getCodigo() {
-        return codigo;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
+    public void setId(Integer id) {
+        this.id = id;
     }
     
     public String getNombre() {
@@ -42,7 +42,7 @@ public class Rol implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (codigo != null ? codigo.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -53,7 +53,7 @@ public class Rol implements Serializable {
             return false;
         }
         Rol other = (Rol) object;
-        if ((this.codigo == null && other.codigo != null) || (this.codigo != null && !this.codigo.equals(other.codigo))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -61,7 +61,7 @@ public class Rol implements Serializable {
 
     @Override
     public String toString() {
-        return "modelos.Rol[ codigo=" + codigo + ", nombre="+nombre+" ]";
+        return "modelos.Rol[ codigo=" + id + ", nombre="+nombre+" ]";
     }
     
 }

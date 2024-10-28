@@ -21,7 +21,7 @@ public class Venta implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private String id;
     private boolean metodo_pago;
     private float precio_total;
     private Date fec_venta;
@@ -29,12 +29,22 @@ public class Venta implements Serializable {
     private int cant_cuotas;
     private float valor_subsidio;
     private Cliente cliente;
+    private Trabajador asesor;
 
-    public Integer getId() {
+    public Venta(String id, boolean metodo_pago, float precio_total, Date fec_venta) {
+        this.id = id;
+        this.metodo_pago = metodo_pago;
+        this.precio_total = precio_total;
+        this.fec_venta = fec_venta;
+    }
+    
+    
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -92,6 +102,14 @@ public class Venta implements Serializable {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public Trabajador getAsesor() {
+        return asesor;
+    }
+
+    public void setAsesor(Trabajador asesor) {
+        this.asesor = asesor;
     }
     
     @Override

@@ -4,8 +4,14 @@
  */
 package integrador.Asesor;
 
+import controladores.ProyectoControlador;
+import controladores.VentaControlador;
 import integrador.ADMIN.*;
 import integrador.Login;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import modelos.Proyecto;
+import modelos.Venta;
 
 /**
  *
@@ -18,6 +24,22 @@ public class InterfazCrearVenta extends javax.swing.JFrame {
      */
     public InterfazCrearVenta() {
         initComponents();
+        ProyectoControlador proyectoControlador = new ProyectoControlador();
+        Map<String, String> elementos = new LinkedHashMap<>();
+        for (Proyecto proyecto : proyectoControlador.listarProyectos()) {
+            elementos.put(proyecto.getCodigo(), proyecto.getNombre());
+        }
+        
+        for (String value : elementos.values()) {
+            seleproyecto.addItem(value);
+        }
+        
+        seleproyecto.addActionListener(e -> {
+            String selectedValue = (String) seleproyecto.getSelectedItem();
+            
+            System.out.println(selectedValue);
+        });
+        
         transparenciabutton();
     }
 
@@ -232,6 +254,11 @@ public class InterfazCrearVenta extends javax.swing.JFrame {
         seleproyecto.setForeground(new java.awt.Color(204, 204, 204));
         seleproyecto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--SELECCIONA EL PROYECTO--" }));
         seleproyecto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        seleproyecto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seleproyectoActionPerformed(evt);
+            }
+        });
 
         selepropiedad.setFont(new java.awt.Font("Segoe UI", 3, 16)); // NOI18N
         selepropiedad.setForeground(new java.awt.Color(204, 204, 204));
@@ -437,6 +464,10 @@ public class InterfazCrearVenta extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_botonregistrarclienteActionPerformed
 
+    private void seleproyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleproyectoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_seleproyectoActionPerformed
+    
     /**
      * @param args the command line arguments
      */
