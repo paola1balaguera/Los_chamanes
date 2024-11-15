@@ -8,6 +8,8 @@ import integrador.SuperAdmin.*;
 import integrador.Asesor.*;
 import integrador.ADMIN.*;
 import integrador.Login;
+import controladores.ProyectoControlador;
+import modelos.Proyecto;
 
 /**
  *
@@ -22,6 +24,9 @@ public class InterfazCrearProyecto extends javax.swing.JFrame {
         initComponents();
         transparenciabutton();
     }
+    
+    // INSTANCIAMIENTO DE CLASE
+    ProyectoControlador proyectoContro = new ProyectoControlador();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,11 +51,9 @@ public class InterfazCrearProyecto extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         campocodigo = new javax.swing.JTextField();
         campondireccion = new javax.swing.JTextField();
-        campocanttorres = new javax.swing.JTextField();
         camponombre = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         botonguardar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
@@ -182,17 +185,6 @@ public class InterfazCrearProyecto extends javax.swing.JFrame {
         campondireccion.setText("NOMBRE COMPLETO:");
         campondireccion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
 
-        campocanttorres.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        campocanttorres.setForeground(new java.awt.Color(204, 204, 204));
-        campocanttorres.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        campocanttorres.setText("CANTIDAD TORRES:");
-        campocanttorres.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
-        campocanttorres.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campocanttorresActionPerformed(evt);
-            }
-        });
-
         camponombre.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         camponombre.setForeground(new java.awt.Color(204, 204, 204));
         camponombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -209,9 +201,6 @@ public class InterfazCrearProyecto extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         jLabel7.setText("*");
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
-        jLabel10.setText("*");
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         jLabel11.setText("*");
@@ -256,15 +245,9 @@ public class InterfazCrearProyecto extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(128, 128, 128)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                        .addComponent(campocanttorres, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(camponombre, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(camponombre, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
@@ -302,18 +285,11 @@ public class InterfazCrearProyecto extends javax.swing.JFrame {
                             .addComponent(jLabel11)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(19, 19, 19)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel10)
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addGap(6, 6, 6)
-                                            .addComponent(campocanttorres, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(campocodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(camponombre, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(39, 39, 39)
-                                        .addComponent(campondireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(campocodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(camponombre, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(39, 39, 39)
+                                .addComponent(campondireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -347,16 +323,21 @@ public class InterfazCrearProyecto extends javax.swing.JFrame {
     }//GEN-LAST:event_botonsalirbotonlogin
 
     private void botonguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonguardarActionPerformed
-        // TODO add your handling code here:
+        String codigo = campocodigo.getText();
+        String nombre = camponombre.getText();
+        String direccion = campondireccion.getText();
+       
+        
+        
+        System.out.println("codigo:"+codigo);
+        System.out.println("nombre:"+nombre);
+        System.out.println("direccion:"+ direccion);
+
     }//GEN-LAST:event_botonguardarActionPerformed
 
     private void camponombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_camponombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_camponombreActionPerformed
-
-    private void campocanttorresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocanttorresActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campocanttorresActionPerformed
 
     private void campocodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocodigoActionPerformed
         // TODO add your handling code here:
@@ -1441,13 +1422,11 @@ public class InterfazCrearProyecto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonguardar;
     private javax.swing.JButton botonsalir;
-    private javax.swing.JTextField campocanttorres;
     private javax.swing.JTextField campocodigo;
     private javax.swing.JTextField campondireccion;
     private javax.swing.JTextField camponombre;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;

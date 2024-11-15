@@ -26,9 +26,9 @@ public class InterfazCrearVenta extends javax.swing.JFrame {
         initComponents();
         ProyectoControlador proyectoControlador = new ProyectoControlador();
         Map<String, String> elementos = new LinkedHashMap<>();
-        for (Proyecto proyecto : proyectoControlador.listarProyectos()) {
-            elementos.put(proyecto.getCodigo(), proyecto.getNombre());
-        }
+        //for (Proyecto proyecto : proyectoControlador.listarProyectos()) {
+       //     elementos.put(proyecto.getCodigo(), proyecto.getNombre());
+        //}
         
         for (String value : elementos.values()) {
             seleproyecto.addItem(value);

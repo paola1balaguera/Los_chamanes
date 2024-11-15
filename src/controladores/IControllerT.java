@@ -5,15 +5,22 @@
 package controladores;
 
 import java.util.List;
-import modelos.Proyecto;
-import modelos.Venta;
-import modelos.repositorios.ProyectoRepositoryImpl;
-import modelos.repositorios.VentaRepositoryImpl;
 
 /**
  *
  * @author Paola
+ * @param <T>
  */
-public class ProyectoControlador {
+public interface IControllerT<T> {
+    
+    public void crear(T objeto);
+    
+    public void editar(int id,T objeto);
+    
+    public void eliminar(int id);
+    
+    public List listar();
+    
+    public void leer(int id);
 
 }

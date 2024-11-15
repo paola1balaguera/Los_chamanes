@@ -4,16 +4,14 @@
  */
 package controladores;
 
-import java.util.List;
-import modelos.Proyecto;
-import modelos.Venta;
-import modelos.repositorios.ProyectoRepositoryImpl;
-import modelos.repositorios.VentaRepositoryImpl;
-
 /**
  *
  * @author Paola
  */
-public class ProyectoControlador {
-
+public class CrudSimpleControllerTV {
+    private final ControllerImplT implController = new ControllerImplT();
+    
+    public void crear(Object objeto) {
+        implController.crear(objeto);
+    }
 }

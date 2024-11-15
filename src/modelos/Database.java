@@ -13,12 +13,12 @@ import java.sql.SQLException;
  * @author TheBestGroupOfTheChamans
  */
 public class Database {
-    //private static final String URL = "jdbc:mysql://localhost:3306/integrador";
-    private static final String URL = "jdbc:oracle:thin:pepeconstructions/pepeconstructions@192.168.254.215:1521:orcl";
-    private static final String USER = "pepeconstructions";
-    private static final String PASSWORD = "pepeconstructions";
-    //private static final String USER = "root";
-    //private static final String PASSWORD = "pepe123";
+    private static final String URL = "jdbc:mysql://localhost:3306/integrador";
+    //private static final String URL = "jdbc:oracle:thin:pepeconstructions/pepeconstructions@192.168.254.215:1521:orcl";
+    //private static final String USER = "pepeconstructions";
+    //private static final String PASSWORD = "pepeconstructions";
+    private static final String USER = "root";
+    private static final String PASSWORD = "pepe123";
     
     public static Connection init() {
         Connection connection = null;

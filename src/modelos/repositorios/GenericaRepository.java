@@ -5,12 +5,14 @@
 package modelos.repositorios;
 
 import java.util.List;
-import modelos.Proyecto;
 
 /**
  *
  * @author Paola
  */
-public interface ProyectoRepository {
-    List<Proyecto> listarProyectos();
+public interface GenericaRepository<T>{
+    void crear(T t);
+    void editar(T t);
+    List<T> listar();
+
 }
