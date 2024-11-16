@@ -1,0 +1,268 @@
+_________________________________________________________________
+
+                --     CREAR PROYECTO       --
+
+CREATE OR REPLACE PROCEDURE SP_GUARDAR_PROYECTO (
+    P_CODIGO_PROYECTO IN VARCHAR,
+    P_NOMBRE IN VARCHAR,
+    P_DIRECCION IN VARCHAR
+) AS
+BEGIN
+    INSERT INTO PROYECTO (CODIGO_PROYECTO, NOMBRE, DIRECCION)
+    VALUES (P_CODIGO_PROYECTO, P_NOMBRE, P_DIRECCION);
+END;
+/
+
+
+-------------------------------------------------------------
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+
+// Acción del botón INTERFAZ
+        guardarProyecto.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    // Capturar datos del formulario
+                    String codigoProyecto = txtCodigoProyecto.getText();
+                    String nombre = txtNombre.getText();
+                    String direccion = txtDireccion.getText();
+
+                    // Crear objeto Proyecto y guardar en la base de datos
+                    Proyecto proyecto = new Proyecto(codigoProyecto, nombre, direccion);
+                    proyecto.guardarEnBaseDeDatos();
+
+                    JOptionPane.showMessageDialog(null, "¡Proyecto guardado exitosamente!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Error al guardar proyecto: " + ex.getMessage());
+                }
+            }
+        });
+
+--------------------------------------------------------------------
+
+// Para clase Proyecto
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.CallableStatement;
+import java.sql.SQLException;
+
+// Método para guardar el proyecto en la base de datos
+    public void guardarEnBaseDeDatos() throws SQLException {
+        String URL = "jdbc:oracle:thin:Administrador/Administrador@192.168.254.215:1521:LosChamanes";
+        String USER = "Administrador";
+        String PASSWORD = "Administrador";
+
+        Connection conexion = null;
+        CallableStatement callableStatement = null;
+
+        try {
+            // Establecer conexión con la base de datos
+            conexion = DriverManager.getConnection(URL, USER, PASSWORD);
+
+            // Llamar al procedimiento almacenado
+            String sql = "{CALL SP_GUARDAR_PROYECTO(?, ?, ?)}";
+            callableStatement = conexion.prepareCall(sql);
+
+            // Asignar valores a los parámetros del procedimiento
+            callableStatement.setString(1, codigoProyecto);
+            callableStatement.setString(2, nombre);
+            callableStatement.setString(3, direccion);
+
+            // Ejecutar el procedimiento
+            callableStatement.execute();
+            System.out.println("Proyecto guardado exitosamente.");
+        } finally {
+            // Cerrar recursos
+            if (callableStatement != null) callableStatement.close();
+            if (conexion != null) conexion.close();
+        }
+    }
+}
+
+
+_________________________________________________________________
+
+               --      MODIFICAR PROYECTO        --
+
+
+CREATE OR REPLACE PROCEDURE SP_MODIFICAR_PROYECTO (
+    P_CODIGO_PROYECTO IN VARCHAR,
+    P_NOMBRE IN VARCHAR,
+    P_DIRECCION IN VARCHAR
+) AS
+BEGIN
+    UPDATE PROYECTO
+    SET NOMBRE = P_NOMBRE,
+        DIRECCION = P_DIRECCION
+    WHERE CODIGO_PROYECTO = P_CODIGO_PROYECTO;
+END;
+/
+
+-----------------------------------------------------------------
+
+// Método para actualizar el proyecto en la base de datos
+    public void modificarEnBaseDeDatos() throws SQLException {
+        String URL = "jdbc:oracle:thin:Administrador/Administrador@192.168.254.215:1521:LosChamanes";
+        String USER = "Administrador";
+        String PASSWORD = "Administrador";
+
+        Connection conexion = null;
+        CallableStatement callableStatement = null;
+
+        try {
+            // Conexión con la base de datos
+            conexion = DriverManager.getConnection(URL, USER, PASSWORD);
+
+            // Llamada al procedimiento almacenado
+            String sql = "{CALL SP_MODIFICAR_PROYECTO(?, ?, ?)}";
+            callableStatement = conexion.prepareCall(sql);
+
+            // Asignar parámetros
+            callableStatement.setString(1, codigoProyecto); // Código del proyecto no se puede cambiar
+            callableStatement.setString(2, nombre);          // Nombre actualizado
+            callableStatement.setString(3, direccion);       // Dirección actualizada
+
+            // Ejecutar el procedimiento
+            callableStatement.execute();
+            System.out.println("Proyecto modificado exitosamente.");
+        } finally {
+            // Cerrar recursos
+            if (callableStatement != null) callableStatement.close();
+            if (conexion != null) conexion.close();
+        }
+    }
+}
+
+--------------------------------------------------------------------
+// Boton GuardarModificarProyecto
+
+guardarModificacionProyecto.addActionListener(e -> {
+    try {
+        // Capturar los datos actualizados desde los campos del formulario
+        String codigoProyecto = txtCodigoProyecto.getText(); // No editable
+        String nombre = txtNombre.getText();
+        String direccion = txtDireccion.getText();
+
+        // Crear un objeto Proyecto con los datos editados
+        Proyecto proyecto = new Proyecto(codigoProyecto, nombre, direccion);
+
+        // Llamar al método para modificar en la base de datos
+        proyecto.modificarEnBaseDeDatos();
+
+        // Mostrar mensaje de éxito
+        JOptionPane.showMessageDialog(null, "¡Proyecto modificado exitosamente!");
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(null, "Error al modificar proyecto: " + ex.getMessage());
+    }
+});
+
+
+_________________________________________________________________
+
+               --      ELIMINAR PROYECTO        --
+
+CREATE OR REPLACE PROCEDURE SP_ELIMINAR_PROYECTO (
+    P_CODIGO_PROYECTO IN VARCHAR
+) AS
+    v_contador NUMBER; -- Variable para contar propiedades en estado Vendido
+BEGIN
+    -- Verificar si existen propiedades en estado "Vendido"
+    SELECT COUNT(*)
+    INTO v_contador
+    FROM PROPIEDAD prop
+    JOIN TORRE tor ON prop.COD_TORRE = tor.CODIGO
+    WHERE tor.CODIGO_PROYECTO = P_CODIGO_PROYECTO
+      AND prop.ESTADO = 'Vendido';
+
+    -- Si existen propiedades vendidas, lanzar un error
+    IF v_contador > 0 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'No se puede eliminar el proyecto porque tiene propiedades vendidas.');
+    END IF;
+
+    -- Eliminar las propiedades asociadas al proyecto
+    DELETE FROM PROPIEDAD
+    WHERE COD_TORRE IN (
+        SELECT CODIGO
+        FROM TORRE
+        WHERE CODIGO_PROYECTO = P_CODIGO_PROYECTO
+    );
+
+    -- Eliminar las torres asociadas al proyecto
+    DELETE FROM TORRE
+    WHERE CODIGO_PROYECTO = P_CODIGO_PROYECTO;
+
+    -- Eliminar el proyecto
+    DELETE FROM PROYECTO
+    WHERE CODIGO = P_CODIGO_PROYECTO;
+END;
+/
+
+
+----------------------------------------------------------------------
+//Clase Proyecto
+
+// Método para eliminar un proyecto
+    public void eliminarEnBaseDeDatos() throws SQLException {
+        String URL = "jdbc:oracle:thin:Administrador/Administrador@192.168.254.215:1521:LosChamanes";
+        String USER = "Administrador";
+        String PASSWORD = "Administrador";
+
+        Connection conexion = null;
+        CallableStatement callableStatement = null;
+
+        try {
+            // Establecer conexión con la base de datos
+            conexion = DriverManager.getConnection(URL, USER, PASSWORD);
+
+            // Llamar al procedimiento almacenado
+            String sql = "{CALL SP_ELIMINAR_PROYECTO(?)}";
+            callableStatement = conexion.prepareCall(sql);
+
+            // Asignar el código del proyecto
+            callableStatement.setString(1, codigoProyecto);
+
+            // Ejecutar el procedimiento
+            callableStatement.execute();
+            System.out.println("Proyecto eliminado exitosamente.");
+        } catch (SQLException e) {
+            // Manejar errores del procedimiento almacenado
+            if (e.getErrorCode() == 20001) {
+                System.out.println("Error: " + e.getMessage());
+                throw new SQLException("No se puede eliminar el proyecto porque tiene propiedades vendidas.");
+            } else {
+                throw e;
+            }
+        } finally {
+            // Cerrar recursos
+            if (callableStatement != null) callableStatement.close();
+            if (conexion != null) conexion.close();
+        }
+    }
+}
+
+
+-------------------------------------------------------------------------------
+
+// botón EliminarProyecto
+
+eliminarProyecto.addActionListener(e -> {
+    try {
+        // Capturar el código del proyecto seleccionado (de tu lista o tabla en la interfaz)
+        String codigoProyecto = txtCodigoProyecto.getText();
+
+        // Crear un objeto Proyecto con el código del proyecto seleccionado
+        Proyecto proyecto = new Proyecto(codigoProyecto);
+
+        // Llamar al método para eliminar en la base de datos
+        proyecto.eliminarEnBaseDeDatos();
+
+        // Mostrar mensaje de éxito
+        JOptionPane.showMessageDialog(null, "¡Proyecto eliminado exitosamente!");
+    } catch (SQLException ex) {
+        // Mostrar el mensaje de error del procedimiento
+        JOptionPane.showMessageDialog(null, "Error al eliminar proyecto: " + ex.getMessage());
+    }
+});
