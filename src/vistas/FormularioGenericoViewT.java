@@ -14,7 +14,7 @@ public class FormularioGenericoViewT{
     
     private List<String> campos;
     
-    private final IVistaGenericaT vistaGenerica = new IVistaGenericaT() {};
+    //private final IVistaGenericaT vistaGenerica = new IVistaGenericaT();
 
     public void mostrarFormulario(Object t) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

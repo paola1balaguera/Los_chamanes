@@ -4,110 +4,94 @@
  */
 package modelos;
 
-import java.io.Serializable;
-import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 /**
  *
- * @author TheBestGroupOfTheChamans
+ * @author Paola
  */
-@Entity
-public class Cliente implements Serializable {
+public class Cliente {
+    private String cedula;
+    private String nombreCompleto;
+    private int celular;
+    private String correoElectronico;
+    private String direccionResidencia;
+    private float ingresos;
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long cedula;
-    private boolean metodo_pago;
-    private float precio_total;
-    private Date fec_venta;
-    private float porcentaje_interes;
-    private int cant_cuotas;
-    private float valor_subsidio;
+    // Constructor
+    public Cliente(String cedula, String nombreCompleto, int celular, String correoElectronico, String direccionResidencia, float ingresos) {
+        this.cedula = cedula;
+        this.nombreCompleto = nombreCompleto;
+        this.celular = celular;
+        this.correoElectronico = correoElectronico;
+        this.direccionResidencia = direccionResidencia;
+        this.ingresos = ingresos;
+    }
 
-    public Long getCedula() {
+    public Cliente(String cedula, String nombreCompleto,int celular, String correoElectronico) {
+        this.cedula = cedula;
+        this.nombreCompleto = nombreCompleto;
+        this.celular = celular;
+        this.correoElectronico = correoElectronico;    
+    }
+
+    // Métodos getter y setter
+    public String getCedula() {
         return cedula;
     }
 
-    public void setCedula(Long cedula) {
+    public void setCedula(String cedula) {
         this.cedula = cedula;
     }
 
-    public boolean isMetodo_pago() {
-        return metodo_pago;
+    public String getNombreCompleto() {
+        return nombreCompleto;
     }
 
-    public void setMetodo_pago(boolean metodo_pago) {
-        this.metodo_pago = metodo_pago;
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
     }
 
-    public float getPrecio_total() {
-        return precio_total;
+    public int getCelular() {
+        return celular;
     }
 
-    public void setPrecio_total(float precio_total) {
-        this.precio_total = precio_total;
+    public void setCelular(int celular) {
+        this.celular = celular;
     }
 
-    public Date getFec_venta() {
-        return fec_venta;
+    public String getCorreoElectronico() {
+        return correoElectronico;
     }
 
-    public void setFec_venta(Date fec_venta) {
-        this.fec_venta = fec_venta;
+    public void setCorreoElectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
     }
 
-    public float getPorcentaje_interes() {
-        return porcentaje_interes;
+    public String getDireccionResidencia() {
+        return direccionResidencia;
     }
 
-    public void setPorcentaje_interes(float porcentaje_interes) {
-        this.porcentaje_interes = porcentaje_interes;
+    public void setDireccionResidencia(String direccionResidencia) {
+        this.direccionResidencia = direccionResidencia;
     }
 
-    public int getCant_cuotas() {
-        return cant_cuotas;
+    public float getIngresos() {
+        return ingresos;
     }
 
-    public void setCant_cuotas(int cant_cuotas) {
-        this.cant_cuotas = cant_cuotas;
+    public void setIngresos(float ingresos) {
+        this.ingresos = ingresos;
     }
 
-    public float getValor_subsidio() {
-        return valor_subsidio;
-    }
-
-    public void setValor_subsidio(float valor_subsidio) {
-        this.valor_subsidio = valor_subsidio;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (cedula != null ? cedula.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cliente)) {
-            return false;
-        }
-        Cliente other = (Cliente) object;
-        if ((this.cedula == null && other.cedula != null) || (this.cedula != null && !this.cedula.equals(other.cedula))) {
-            return false;
-        }
-        return true;
-    }
-
+    // Método toString (opcional, para mostrar información de la clase)
     @Override
     public String toString() {
-        return "modelos.Cliente[ id=" + cedula + " ]";
+        return "Trabajador{" +
+                "cedula='" + cedula + '\'' +
+                ", nombreCompleto='" + nombreCompleto + '\'' +
+                ", celular=" + celular +
+                ", correoElectronico='" + correoElectronico + '\'' +
+                ", direccionResidencia='" + direccionResidencia + '\'' +
+                ", ingresos=" + ingresos +
+                '}';
     }
-    
 }

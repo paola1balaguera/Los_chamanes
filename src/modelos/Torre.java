@@ -4,74 +4,47 @@
  */
 package modelos;
 
-import java.io.Serializable;
-import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 /**
  *
- * @author TheBestGroupOfTheChamans
+ * @author Paola
  */
-@Entity
-public class Torre implements Serializable {
+import java.util.Date;
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer codigo;
-    private Date fecha_construccion;
-    private Proyecto proyecto;
+public class Torre {
+    private String codigo;
+    private Date fechaConstruccion;
 
-    public Integer getCodigo() {
+    // Constructor
+    public Torre(String codigo, Date fechaConstruccion) {
+        this.codigo = codigo;
+        this.fechaConstruccion = fechaConstruccion;
+    }
+
+    // Getters
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(Integer codigo) {
+    public Date getFechaConstruccion() {
+        return fechaConstruccion;
+    }
+
+    // Setters
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
-    public Date getFecha_construccion() {
-        return fecha_construccion;
+    public void setFechaConstruccion(Date fechaConstruccion) {
+        this.fechaConstruccion = fechaConstruccion;
     }
 
-    public void setFecha_construccion(Date fecha_construccion) {
-        this.fecha_construccion = fecha_construccion;
-    }
-
-    public Proyecto getProyecto() {
-        return proyecto;
-    }
-
-    public void setProyecto(Proyecto proyecto) {
-        this.proyecto = proyecto;
-    }
-        
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (codigo != null ? codigo.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Torre)) {
-            return false;
-        }
-        Torre other = (Torre) object;
-        if ((this.codigo == null && other.codigo != null) || (this.codigo != null && !this.codigo.equals(other.codigo))) {
-            return false;
-        }
-        return true;
-    }
-
+    // Método toString (opcional, para imprimir detalles de la clase)
     @Override
     public String toString() {
-        return "modelos.Torre[ id=" + codigo + " ]";
+        return "Torre{" +
+               "codigo='" + codigo + '\'' +
+               ", fechaConstruccion=" + fechaConstruccion +
+               '}';
     }
-    
 }
+

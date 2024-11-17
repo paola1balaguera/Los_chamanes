@@ -4,10 +4,21 @@
  */
 package integrador;
 
-import controladores.TrabajadorControlador;
+import controladores.TrabajadorController;
+import factory.AdministradorFactory;
+import factory.AsesorFactory;
+import factory.TrabajadorFactory;
 import integrador.SuperAdmin.InterfazSuperAdmin;
 import integrador.Asesor.InterfazAsesor;
 import integrador.ADMIN.InterfazAdmin;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import repositorios.implRepositoryTrabajador;
+import vistas.GenericInterface;
+import vistas.VistaGenerica;
+import vistas.VistaGenericaController;
+
 
 /**
  *
@@ -158,9 +169,14 @@ public class Login extends javax.swing.JFrame {
 
     private void botonlogin(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonlogin
         
-        TrabajadorControlador trabajadorControlador = new TrabajadorControlador();
+        /*List<String> proyectos = new ArrayList<>();
+        proyectos.add("Proyecto 1");
+        proyectos.add("Proyecto 2");
         
-        int cedula = Integer.parseInt(jTextField2.getText());
+        VistaGenerica vg = new VistaGenerica("PROYECTO");
+        VistaGenericaController<String> vgc = new VistaGenericaController<>(vg, proyectos);
+        vg.setVisible(true);*/
+        String cedula = jTextField2.getText();
         char[] contrasena = password.getPassword();
                 // Convertir a String para mostrar
         String passwordStr = new String(contrasena);
@@ -169,7 +185,19 @@ public class Login extends javax.swing.JFrame {
         System.out.println(cedula);
         System.out.println(passwordStr);
         
-        if(trabajadorControlador.iniciarSesion(cedula, passwordStr, role) == true) {
+        TrabajadorFactory trabajadorFactory = null;
+        
+        if (role == 0) {
+            AsesorFactory asesorFactory = new AsesorFactory();
+            trabajadorFactory = asesorFactory;
+        } else if(role == 1) {
+            AdministradorFactory administradorFactory = new AdministradorFactory();
+            trabajadorFactory = administradorFactory;
+        } 
+        
+        implRepositoryTrabajador implRepository = new implRepositoryTrabajador(trabajadorFactory);
+        TrabajadorController trabajadorController = new TrabajadorController(implRepository);
+        if(trabajadorController.iniciar_sesion(cedula, passwordStr, role) == true) {
             if (role == 0) {
                 InterfazAsesor ia = new InterfazAsesor();
                 
@@ -178,36 +206,15 @@ public class Login extends javax.swing.JFrame {
                 InterfazAdmin iadm = new InterfazAdmin();
             
                 iadm.setVisible(true);
-            } else if(role == 2) {
-                InterfazSuperAdmin iasa = new InterfazSuperAdmin();
-                iasa.setVisible(true);
             }
             this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, 
+            "¡Usuario o Contraseña Incorrectos!", 
+            "Alerta", 
+            JOptionPane.WARNING_MESSAGE);
         }
         
-        
-        
-        
-        // TODO add your handling code here:
-        /*if(rol.getSelectedIndex()== 0){
-            InterfazAsesor interfazAs= new InterfazAsesor();
-            interfazAs.setVisible(true);
-            this.setVisible(false);
-        }
-        else if(rol.getSelectedIndex()== 1){
-            InterfazAdmin interfazAd= new InterfazAdmin();
-            interfazAd.setVisible(true);
-            this.setVisible(false);
-        }
-        else if(rol.getSelectedIndex()== 2){
-            InterfazSuperAdmin interfazSAd= new InterfazSuperAdmin();
-            interfazSAd.setVisible(true);
-            this.setVisible(false);
-        }
-        else{
-            System.out.println("error");}*/
-        
-
     }//GEN-LAST:event_botonlogin
 
     private void usuariologin(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuariologin

@@ -4,7 +4,14 @@
  */
 package integrador.ADMIN;
 
+import controladores.CrudCompletoControllerT;
 import integrador.Login;
+import java.util.ArrayList;
+import java.util.List;
+import modelos.Proyecto;
+import repositorios.implRepositoryProyecto;
+import vistas.VistaGenerica;
+import vistas.VistaGenericaController;
 
 /**
  *
@@ -377,9 +384,23 @@ public class InterfazAdmin extends javax.swing.JFrame {
 
     private void gestionarproyectosbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionarproyectosbuttonActionPerformed
         // TODO add your handling code here:
-        InterfazGestionarProyecto gproyecto=new InterfazGestionarProyecto();
-        gproyecto.setVisible(true);
-        this.setVisible(false);
+        
+        implRepositoryProyecto implRepository = new implRepositoryProyecto();
+        CrudCompletoControllerT crudCompleto = new CrudCompletoControllerT(implRepository);
+        
+        InterfazCrearProyecto gestionarProyecto = new InterfazCrearProyecto();
+        
+        //System.out.println(crudCompleto.listar());
+        
+        List<Proyecto> proyectos = crudCompleto.listar();
+        
+        System.out.println(proyectos);
+        
+        VistaGenerica vg = new VistaGenerica("PROYECTO", "ADMIN");
+        VistaGenericaController<String> vgc = new VistaGenericaController<>(vg, proyectos, this, crudCompleto, gestionarProyecto);
+        this.dispose();
+        vg.setVisible(true);
+        
     }//GEN-LAST:event_gestionarproyectosbuttonActionPerformed
 
     private void gestionarAsesorbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionarAsesorbuttonActionPerformed
@@ -435,21 +456,6 @@ public class InterfazAdmin extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(InterfazAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
